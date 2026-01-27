@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import { motion, Variants } from "framer-motion"; // 1. Added Variants import
+import { motion, Variants } from "framer-motion"; // Import Variants type
 import emailjs from "@emailjs/browser";
 import {
   Mail,
@@ -13,8 +13,9 @@ import {
   Cpu,
 } from "lucide-react";
 
-// --- 1. ANIMATION VARIANTS (Same as before) ---
-const containerVariants = {
+// --- 1. ANIMATION VARIANTS ---
+// FIXED: Added ': Variants' to all variant objects below
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -22,12 +23,15 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100 } },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 100 },
+  },
 };
 
-// 2. Added ': Variants' type annotation here to fix the build error
 const floatingIconVariants: Variants = {
   initial: { y: 0, rotate: 0, opacity: 0.3 },
   animate: {
@@ -70,7 +74,6 @@ export default function Contact() {
           (result) => {
             console.log(result.text);
             setFormState("success");
-            // Reset form after success
             if (formRef.current) formRef.current.reset();
             setTimeout(() => setFormState("idle"), 3000);
           },
