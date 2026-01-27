@@ -12,13 +12,11 @@ import { Code2, Video, Server, ChevronRight } from "lucide-react";
 
 // --- 1. FLOATING PARTICLES (CRASH-PROOF VERSION) ---
 const FloatingParticles = () => {
-  // We use state to ensure the random positions are ONLY generated on the client
   const [particles, setParticles] = useState<
     Array<{ x: number; y: number; duration: number; delay: number }>
   >([]);
 
   useEffect(() => {
-    // This code runs ONLY in the browser, preventing the "Hydration Error"
     const particleCount = 20;
     const newParticles = Array.from({ length: particleCount }).map(() => ({
       x: Math.random() * 100,
@@ -174,6 +172,8 @@ const OrbitingSystem = () => {
             src="/profile.jpg"
             alt="Charan"
             fill
+            // ADDED sizes prop to fix warning and improve performance
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-110"
             priority
           />
@@ -278,12 +278,14 @@ export default function Hero() {
 
   return (
     <div
-      className="relative min-h-screen w-full bg-white dark:bg-black text-neutral-900 dark:text-white flex items-center justify-center overflow-hidden group/spotlight pt-24 md:pt-0 transition-colors duration-300"
+      // FIXED: Changed 'bg-white dark:bg-black' to 'bg-transparent'
+      // This allows the global CursorGlow to show through!
+      className="relative min-h-screen w-full bg-transparent text-neutral-900 dark:text-white flex items-center justify-center overflow-hidden group/spotlight pt-24 md:pt-0 transition-colors duration-300"
       onMouseMove={handleMouseMove}
     >
       {/* Background Layer with Particles */}
       <div className="absolute inset-0 z-0">
-        <FloatingParticles /> {/* <--- Particles added back here safely! */}
+        <FloatingParticles />
         <div className="hidden dark:block h-full w-full">
           <Spotlight />
         </div>

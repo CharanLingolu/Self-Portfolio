@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./providers";
 import FloatingParticles from "../components/FloatingParticles";
+import CursorGlow from "../components/CursorGlow";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,11 +32,13 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark" // <--- 1. Set default to dark
-          enableSystem={false} // <--- 2. Disable system (prevents OS light mode from overriding)
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
+          {/* Global Background Effects */}
           <FloatingParticles />
+          <CursorGlow /> {/* <--- 2. Add it here! */}
           <div className="relative z-10">{children}</div>
         </ThemeProvider>
       </body>
