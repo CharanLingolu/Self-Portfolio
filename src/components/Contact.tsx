@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import { motion, Variants } from "framer-motion"; // Import Variants type
+import { motion, Variants } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import {
   Mail,
@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 
 // --- 1. ANIMATION VARIANTS ---
-// FIXED: Added ': Variants' to all variant objects below
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -62,27 +61,38 @@ export default function Contact() {
     e.preventDefault();
     setFormState("submitting");
 
-    // YOUR ACTUAL KEYS
+    // --- CONFIGURATION ---
     const SERVICE_ID = "service_72wqha2";
-    const TEMPLATE_ID = "template_r97vuua";
     const PUBLIC_KEY = "iyJNrEcYaWtTpGvnv";
+    const ADMIN_TEMPLATE_ID = "template_nd5035a";
+    const USER_TEMPLATE_ID = "template_r97vuua";
 
     if (formRef.current) {
-      emailjs
-        .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
-        .then(
-          (result) => {
-            console.log(result.text);
-            setFormState("success");
-            if (formRef.current) formRef.current.reset();
-            setTimeout(() => setFormState("idle"), 3000);
-          },
-          (error) => {
-            console.log(error.text);
-            setFormState("error");
-            setTimeout(() => setFormState("idle"), 3000);
-          }
-        );
+      Promise.all([
+        emailjs.sendForm(
+          SERVICE_ID,
+          ADMIN_TEMPLATE_ID,
+          formRef.current,
+          PUBLIC_KEY
+        ),
+        emailjs.sendForm(
+          SERVICE_ID,
+          USER_TEMPLATE_ID,
+          formRef.current,
+          PUBLIC_KEY
+        ),
+      ]).then(
+        () => {
+          setFormState("success");
+          if (formRef.current) formRef.current.reset();
+          setTimeout(() => setFormState("idle"), 3000);
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          setFormState("error");
+          setTimeout(() => setFormState("idle"), 3000);
+        }
+      );
     }
   };
 
