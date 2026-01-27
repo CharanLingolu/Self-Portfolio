@@ -169,7 +169,7 @@ const OrbitingSystem = () => {
       >
         <div className="absolute inset-0 rounded-full overflow-hidden">
           <Image
-            src="/profile.jpg"
+            src="/Profile.jpg"
             alt="Charan"
             fill
             // ADDED sizes prop to fix warning and improve performance
