@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@config "../../tailwind.config.mjs";
+
+/* 1. Define Variables */
+:root {
+  /* Light Mode Colors */
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  /* Dark Mode Colors */
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+/* 2. Force Body to use these variables */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 3. Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+nextjs-portal {
+  display: none !important;
+}
