@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // 1. Added Variants import
 import emailjs from "@emailjs/browser";
 import {
   Mail,
@@ -27,7 +27,8 @@ const itemVariants = {
   visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100 } },
 };
 
-const floatingIconVariants = {
+// 2. Added ': Variants' type annotation here to fix the build error
+const floatingIconVariants: Variants = {
   initial: { y: 0, rotate: 0, opacity: 0.3 },
   animate: {
     y: [-10, 10, -10],
@@ -57,7 +58,7 @@ export default function Contact() {
     e.preventDefault();
     setFormState("submitting");
 
-    // REPLACE THESE WITH YOUR ACTUAL KEYS FROM STEP 2
+    // YOUR ACTUAL KEYS
     const SERVICE_ID = "service_72wqha2";
     const TEMPLATE_ID = "template_r97vuua";
     const PUBLIC_KEY = "iyJNrEcYaWtTpGvnv";
