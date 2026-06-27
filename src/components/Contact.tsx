@@ -244,7 +244,7 @@ export default function Contact() {
                       required
                       name="user_name"
                       type="text"
-                      placeholder="your_name"
+                      placeholder="charan"
                       className="w-full bg-neutral-100 dark:bg-black border border-neutral-200 dark:border-white/10 rounded-xl px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
                     />
                   </div>
