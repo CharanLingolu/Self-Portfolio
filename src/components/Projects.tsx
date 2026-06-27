@@ -41,7 +41,7 @@ const projects = [
       "ReactToastify",
       "Lucide-React",
     ],
-    link: "https://bvc-digital-hub.vercel.app/",
+    link: "https://bvc-digital-hub-6vtc.vercel.app/",
   },
   {
     title: "Creative Video Editing",
