@@ -27,16 +27,6 @@ const projects = [
     link: "https://nibblish.in",
   },
   {
-    title: "Student Mark Tracker",
-    category: "EdTech",
-    description:
-      "Full-stack MERN application for tracking and analyzing academic performance.",
-    className: "md:col-span-1",
-    gradient: "from-orange-500/20 to-red-500/20",
-    tech: ["MongoDB", "Express", "React", "Node JS"],
-    link: "https://studentmarktracker.vercel.app/",
-  },
-  {
     title: "BVC DigitalHub",
     category: "Community",
     description:
@@ -54,7 +44,7 @@ const projects = [
     link: "https://bvc-digital-hub.vercel.app/",
   },
   {
-    title: "Cinematic Editing",
+    title: "Creative Video Editing",
     category: "Creative",
     description:
       "High-retention video storytelling and visual effects for content creators.",
