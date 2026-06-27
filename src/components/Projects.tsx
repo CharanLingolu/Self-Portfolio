@@ -31,7 +31,7 @@ const projects = [
     category: "Community",
     description:
       "A role based centralized college resource hub fostering student collaboration.",
-    className: "md:col-span-2",
+    className: "md:col-span-1",
     gradient: "from-yellow-500/20 to-amber-500/20",
     tech: [
       "React",
@@ -48,7 +48,7 @@ const projects = [
     category: "Creative",
     description:
       "High-retention video storytelling and visual effects for content creators.",
-    className: "md:col-span-3",
+    className: "md:col-span-2",
     gradient: "from-green-500/20 to-emerald-500/20",
     tech: ["Premiere Pro", "After Effects", "Photoshop"],
     link: "https://www.instagram.com/lc__creations__1?igsh=MXg4dDBkYnR6dzYzcQ==",
